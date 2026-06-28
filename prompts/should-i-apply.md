@@ -110,11 +110,17 @@
 
 ---
 
-## Step 3 · 沉淀 + 导流
+## Step 3 · 沉淀 + 生成 HTML 报告 + 导流
 
 1. **更新 JD 文件**：加 should_i_apply section（推荐指数 + 决策 + 下一步动作）。
-2. **导流**：
-   > "评估完成 ✅。基于上面的建议：
+2. **生成 HTML Offer Strategy Report（默认动作）** —— 把 Flow 1 + 2 + 4 + 5 + 策略层（内推 / portfolio / 时间线）融合成一份可分享的单文件 HTML：
+   - 路径：`~/Desktop/Claude skills/offer-strategy-<company>-<role>-<YYYYMM>.html`（目录不存在也先建）
+   - 完整 20 章骨架 / 视觉规范 / 内容铁律见 [../frameworks/offer-strategy-report.md](../frameworks/offer-strategy-report.md)
+   - CSS / 结构骨架参考 [../examples/offer-strategy-template.html](../examples/offer-strategy-template.html)
+   - **生成后告诉用户文件路径**，并在 JD 文件末尾加一行 `> 📊 HTML 报告：~/Desktop/Claude skills/offer-strategy-<slug>.html`
+   - 如果 Flow 2 还没跑或者简历事实不足以填 6 条 Must Have 证据 → **拒绝生成**，告诉用户"先补完 ___ 再出报告"
+3. **导流**：
+   > "评估完成 ✅，报告在 `~/Desktop/Claude skills/offer-strategy-<slug>.html`。基于上面的建议：
    > - 决定投 → 流程 3 Tailor 简历
    > - 还想多看一份对比 → 把另一份 JD 发我
    > - 决定不投 → 我帮你把这份归档到 jd-bank（status: closed）"

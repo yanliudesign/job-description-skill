@@ -8,6 +8,22 @@ A JD ≠ a recruiting blurb. It's the hiring manager's real expectations, the te
 
 ---
 
+## Default Onboarding Wizard
+
+Invoke the skill with a vague ask like "help me with this job" / "走一下这个 JD" and you get a 7-step guided run:
+
+1. **Paste the JD** — link or full text.
+2. **Give the skill your profile** — three options:
+   - 🅰️ Upload / paste your full resume (recommended)
+   - 🅱️ Paste your full LinkedIn
+   - 🅲️ No resume yet → short self-introduction (current title, recent 2–3 roles, top skills, target direction). Match / Tailor results will be flagged as "unverified against a real resume" and you'll be nudged toward **Resume Skill** to build one.
+3–7. **Run flows 1 → 5 in sequence** — Decode → Match → Tailor → Predict → Should I Apply, pausing for confirmation between each so you can skip or redirect.
+8. **Auto-generate the Offer Strategy Report** — a single-file, self-contained HTML deck that fuses Flow 1 + 2 + 4 + 5 + strategy layer (referral / portfolio / timeline), saved to `~/Desktop/Claude skills/offer-strategy-<slug>.html`. Spec in [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md), skeleton in [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html).
+
+If you already know which single flow you want, say so ("only decode this" / "just match score") and the skill skips the wizard and routes straight there.
+
+---
+
 ## 5 Flows (ordered by frequency of use)
 
 | Flow | Purpose | How users ask |
@@ -45,7 +61,10 @@ job-description-skill/
 │   ├── decode-patterns.md        # JD keyword → real intent dictionary
 │   ├── match-rubric.md           # Scoring rubric (Must / Nice / Hidden)
 │   ├── resume-tailoring.md       # Three-version resume strategy
-│   └── go-no-go.md               # ⭐ rating + interview probability formula
+│   ├── go-no-go.md               # ⭐ rating + interview probability formula
+│   └── offer-strategy-report.md  # Final HTML report — sections, visual system, content rules
+├── examples/                     # Reference skeletons (no personal data)
+│   └── offer-strategy-template.html
 └── jd-bank/                      # Local cache of analyzed JDs (gitignored)
     ├── _index.md                 # Index
     └── _jd-template.md           # Starter template for new JDs

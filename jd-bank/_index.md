@@ -25,13 +25,9 @@
 
 ### 🔍 Decoded（已解码，未决定）
 
-> 暂无
-
-<!--
 | 文件 | 公司 | 岗位 | Level | 解码日期 |
 |---|---|---|---|---|
-| [openai-product-designer-202606.md](openai-product-designer-202606.md) | OpenAI | Product Designer | Senior | 2026-06-20 |
--->
+| [openai-product-designer-chatgpt-202606.md](openai-product-designer-chatgpt-202606.md) | OpenAI | Product Designer, ChatGPT | Senior IC (inferred) | 2026-06-28 |
 
 ### 📊 Matched（已算匹配度）
 
@@ -71,24 +67,19 @@
 
 ## 按公司聚合（同公司多份 JD 可复用 Hidden Signal）
 
-> 暂无
-
-<!--
 ### OpenAI
-- [openai-product-designer-202606.md](openai-product-designer-202606.md) — Senior Product Designer
-- [openai-design-engineer-202606.md](openai-design-engineer-202606.md) — Design Engineer
--->
+- [openai-product-designer-chatgpt-202606.md](openai-product-designer-chatgpt-202606.md) — Product Designer, ChatGPT (Senior IC, SF)
 
 ---
 
 ## 按岗位类型聚合（同类岗位 must-have 类似，可参考）
 
-> 暂无
+### AI Product Designer (Consumer)
+- [openai-product-designer-chatgpt-202606.md](openai-product-designer-chatgpt-202606.md) — OpenAI / ChatGPT
 
 <!--
 ### AI Product Designer
 - [openai-product-designer-202606.md](openai-product-designer-202606.md)
-- [anthropic-product-designer-202606.md](anthropic-product-designer-202606.md)
 -->
 
 ---

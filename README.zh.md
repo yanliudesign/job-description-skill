@@ -8,6 +8,22 @@
 
 ---
 
+## 默认引导流程（Onboarding Wizard）
+
+用模糊的问法调用 skill（“帮我看看这个职位” / “help me with this job”）会走一套 7 步引导：
+
+1. **贴 JD** —— 链接或全文。
+2. **给你的画像**，三选一：
+   - 🅰️ 上传 / 粘贴简历全文（推荐，结果最准）
+   - 🅱️ 粘贴 LinkedIn 全文
+   - 🅲️ 还没简历 → 简略介绍下自己（当前 Title / 近 2–3 段经历 / 最强 1–2 个技能 / 目标方向）。这条路线下的 Match / Tailor 结果会被标 “未经简历事实校验”，并提示你去 **Resume Skill** 先建一份正式简历。
+3–7. **顺序跑流程 1 → 5** —— Decode → Match → Tailor → Predict → Should I Apply，每条之间停下来让你确认是否继续 / 跳过 / 换方向。
+8. **自动生成 Offer Strategy Report** —— 一份单文件、零依赖的 HTML 报告，融合 Flow 1 + 2 + 4 + 5 + 策略层（内推 / portfolio / 时间线），存到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`。规格见 [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md)，骨架见 [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html)。
+
+如果你已经明确只要某一条流程（“只解码这份 JD” / “只算匹配度”），skill 会跳过引导直接进对应流程。
+
+---
+
 ## 5 个流程（按使用频率排序）
 
 | Flow | 用途 | 用户问法 |
@@ -45,7 +61,10 @@ job-description-skill/
 │   ├── decode-patterns.md        # JD 关键词 → 真实意图字典
 │   ├── match-rubric.md           # 评分尺 (Must / Nice / Hidden)
 │   ├── resume-tailoring.md       # 三版本简历策略
-│   └── go-no-go.md               # ⭐ 推荐指数 + 拿面概率公式
+│   ├── go-no-go.md               # ⭐ 推荐指数 + 拿面概率公式
+│   └── offer-strategy-report.md  # 最终 HTML 报告 — 20 章骨架 + 视觉规范 + 生成说明
+├── examples/                     # 参考骨架（不含个人数据）
+│   └── offer-strategy-template.html
 └── jd-bank/                      # 已分析过的 JD 反查库（本地不进 git）
     ├── _index.md                 # 索引
     └── _jd-template.md           # 新 JD 起手模板

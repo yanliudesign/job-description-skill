@@ -5,6 +5,8 @@ jd-bank/*.md
 
 # Generated reports (live outside repo by convention, but exclude defensively)
 *.html
+# ...except the report template skeleton (no personal data)
+!examples/offer-strategy-template.html
 
 # OS / editor
 .DS_Store
