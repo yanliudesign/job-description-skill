@@ -239,9 +239,40 @@
   .socials a.xhs span { display: inline-block; transform: skewX(-6deg); white-space: nowrap; }
   .socials a.xhs:hover { background: #d11838; border-color: #d11838; transform: translateY(-2px); }
 
+  /* Floating export-PDF button — fixed bottom-right, hidden when printing */
+  .export-pdf {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: #1f1f1d;
+    color: #fafaf7;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--body, system-ui, sans-serif);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  }
+  .export-pdf:hover {
+    background: #d11838;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(209, 24, 56, 0.32), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  .export-pdf:active { transform: translateY(0); }
+  .export-pdf svg { width: 16px; height: 16px; flex-shrink: 0; }
+
   @media print {
     body { background: white; }
     .page { padding: 24px; max-width: none; }
+    .export-pdf { display: none !important; }
     .verdict, .tldr li::before, .num-card, .match-row, .match-summary, .arc-step:last-child,
     .play-card, .audit-card, .q-row, .comp-card.middle, .signal, .decode-card {
       -webkit-print-color-adjust: exact; print-color-adjust: exact;
@@ -268,6 +299,15 @@
 </style>
 </head>
 <body>
+
+<button type="button" class="export-pdf" onclick="window.print()" aria-label="导出 PDF">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+    <polyline points="7 10 12 15 17 10"/>
+    <line x1="12" y1="15" x2="12" y2="3"/>
+  </svg>
+  <span>导出 PDF</span>
+</button>
 
 <header class="report-header">
   <div class="report-meta">
