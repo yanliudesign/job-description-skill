@@ -24,6 +24,29 @@
 
 ---
 
+## 📊 Offer Strategy Report · 10 节报告框架
+
+Wizard 跑完的默认交付物是一份单文件 HTML 报告，存到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`。这份报告是**区别市面其他 JD 工具的核心交付物**。固定 10 节主骸 + TL;DR 预头 + 关键指标仪表：
+
+| # | 章节 | 回答什么 |
+|---|------|----------|
+| — | **TL;DR · 一分钟摘要** | 这到底能不能投？⭐ 1–5 分。 |
+| — | **关键指标** | Match Score 仪表 + Interview Probability 仪表。 |
+| **1** | **公司背景** | 这家公司谁在掌舷 / 文化信号 / 近 12–24 个月出了什么。 |
+| **2** | **本职位产品分析** | 这个 role 管哪个 surface + 4 个核心设计难题 + JD 背后的**真实** scope。 |
+| **3** | **JD 深度解读** | 为什么这份 JD 这样写（Flow 1 精华 + Hidden Signal 词典命中）。 |
+| **4** | **JD ↔ 简历 逐条匹配** | Must Have 卡片 + 完整 Match Matrix（3 列：JD 要求 / 简历证据 / 评分+Gap）+ Nice + 10 维 Hidden Signal 雷达。 |
+| **5** | **Gap 要提升的** | 2–4 张 Gap 卡，标明严重度（高/中）+ 4 周应对动作。 |
+| **6** | **为什么投 / 为什么不投** | 各 3 条。每条“不投”都携 HM probe 应对。 |
+| **7** | **薪资 reality check** | JD 带宽 + 市场数据 + 谈判 talking points。 |
+| **8** | **Next step** | 职业弧套不套 + 内推 playbook（找谁·DM 模板）+ Portfolio audit（4 周必做的具体动作）。 |
+| **9** | **Top 10 面试题预测** | Flow 4 preview。完整 Top 20 + behavior 故事 → 交接给 BQ Skill。 |
+| **10** | **6 周行动计划** | 按周拆解：投递前 / 投递后 / 面试前。 |
+
+报告内置 **一键 Export PDF**（修复了中文字体在 PDF 里不嵌入的问题，Noto SC 工作中）和 **一键 Export Markdown**（单文件 .md 下载）。规格见 [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md)，骨架见 [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html)。
+
+---
+
 ## 5 个流程（按使用频率排序）
 
 | Flow | 用途 | 用户问法 |
@@ -62,7 +85,7 @@ job-description-skill/
 │   ├── match-rubric.md           # 评分尺 (Must / Nice / Hidden)
 │   ├── resume-tailoring.md       # 三版本简历策略
 │   ├── go-no-go.md               # ⭐ 推荐指数 + 拿面概率公式
-│   └── offer-strategy-report.md  # 最终 HTML 报告 — 20 章骨架 + 视觉规范 + 生成说明
+│   └── offer-strategy-report.md  # 最终 HTML 报告 — 10 节骨架 + 视觉规范 + 生成说明
 ├── examples/                     # 参考骨架（不含个人数据）
 │   └── offer-strategy-template.html
 └── jd-bank/                      # 已分析过的 JD 反查库（本地不进 git）

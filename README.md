@@ -24,6 +24,29 @@ If you already know which single flow you want, say so ("only decode this" / "ju
 
 ---
 
+## 📊 Offer Strategy Report · the 10-section framework
+
+Every wizard run ends with a single-file HTML report at `~/Desktop/Claude skills/offer-strategy-<slug>.html`. The report is **the differentiator** — it's what other JD tools don't give you. Fixed 10-section spine, plus a TL;DR preamble and a key-metrics gauge block:
+
+| # | Section | What it answers |
+|---|---------|-----------------|
+| — | **TL;DR · one-minute verdict** | Should I apply? ⭐ 1–5. |
+| — | **Key metrics** | Match Score gauge + Interview Probability gauge. |
+| **1** | **Company background** | Who runs this place, what are the cultural signals, what shipped in the last 12–24 months. |
+| **2** | **Product analysis for this role** | What product / surface this role owns + the 4 core design challenges + the *real* scope behind the JD. |
+| **3** | **JD deep decode** | Why this JD reads the way it does (Flow 1 essence + Hidden Signal dictionary hits). |
+| **4** | **JD ↔ resume line-by-line match** | Must Have cards + full Match Matrix (3 columns: JD ask / resume evidence / score+gap) + Nice + 10-dim Hidden Signal radar. |
+| **5** | **Gap — what to upgrade** | 2–4 gap cards with severity (high/middle) + 4-week mitigation. |
+| **6** | **Why apply / why not** | 3 reasons each side. Every "why not" comes with an HM probe response. |
+| **7** | **Salary reality check** | JD band + market data + negotiation talking points. |
+| **8** | **Next step** | Career arc fit + referral playbook (who, DM template) + portfolio audit (4-week action list). |
+| **9** | **Top 10 interview questions** | Flow 4 preview. Full Top 20 + behavior stories → hand off to BQ Skill. |
+| **10** | **6-week action plan** | Week-by-week to-dos: before applying / after applying / before interview. |
+
+The report supports **Export to PDF** (CJK-safe Noto font embedding) and **Export to Markdown** (single-file MD download). Spec: [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md) · skeleton: [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html).
+
+---
+
 ## 5 Flows (ordered by frequency of use)
 
 | Flow | Purpose | How users ask |
