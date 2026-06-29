@@ -712,8 +712,33 @@
 </section>
 
 <footer class="report-footer">
-  <h2 class="brand-mark">JD SKILL<span class="dot-yellow">.</span></h2>
-  <p>Generated {{TIMESTAMP}} · See also <a href="{{JD_MD_LINK}}">jd-bank markdown</a></p>
+  <div class="brand-block">
+    <div>
+      <h2 class="brand-mark">JD SKILL<span class="dot-yellow">.</span></h2>
+      <div class="brand-sub">Created by <strong>Dreameryanyan</strong> · Job Description Decoder &amp; Offer Strategy OS</div>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/yanliudesign/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn · yanliudesign">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+      <a href="https://x.com/yanliudreamer" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X · @yanliudreamer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a class="xhs" href="https://www.xiaohongshu.com/user/profile/5b2afdf311be104ac3c22931" target="_blank" rel="noopener" aria-label="Xiaohongshu" title="小红书 · Dreameryanyan">
+        <span>小红书</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="sig">— JD Skill · Offer Strategy Report</div>
+  Generated {{TIMESTAMP}} · Source: <a href="{{JD_SOURCE_URL}}" target="_blank">{{JD_SOURCE_DISPLAY}}</a> ·
+  Decoded into 5 layers per <code>prompts/jd-decoder.md</code> ·
+  Match Score computed with 0.6/0.2/0.2 weighting per <code>frameworks/match-rubric.md</code> ·
+  Hit-rate estimated per <code>frameworks/go-no-go.md</code> ·
+  All assessments based on {{CANDIDATE_NAME}} {{RESUME_VERSION}} — <strong>no fabricated facts</strong>.
+  Comp figures use public market data (Levels.fyi 等); treat as range, not quote.
+  <br><br>
+  See also <a href="{{JD_MD_LINK}}">jd-bank markdown</a>.
 </footer>
 
 <script>

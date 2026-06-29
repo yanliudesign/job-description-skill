@@ -31,7 +31,9 @@
 
 ### 📊 Matched（已算匹配度）
 
-> 暂无
+| 文件 | 公司 | 岗位 | Match | ⭐ | 候选人 |
+|---|---|---|---|---|---|
+| [linear-principal-product-designer-202606.md](linear-principal-product-designer-202606.md) | Linear | Principal Product Designer | 70–80% | 3.5/5 | Yan Liu |
 
 <!--
 | 文件 | 公司 | 岗位 | Match | 下一步 |

@@ -82,7 +82,7 @@
 
 ### 报告尾
 
-- **Footer** — `JD SKILL.` brand mark + 生成时间戳 + 同 JD 的 markdown 文件链接
+- **Footer（必须用完整签名版，不要简化）** — `JD SKILL.` brand mark + `Created by Dreameryanyan · Job Description Decoder & Offer Strategy OS` 副标题 + 三个社交圆形按钮（LinkedIn `yanliudesign` / X `yanliudreamer` / 小红书红方块）+ italic sig 行 `— JD Skill · Offer Strategy Report` + meta 行（生成时间戳 + JD source URL + 评分方法引用 + "no fabricated facts" 声明）+ 同 JD 的 markdown 文件链接。骨架见 [examples/offer-strategy-template.html](../examples/offer-strategy-template.html) 的 `<footer class="report-footer">`。**生成新报告时这一块原样保留，不要因为"看起来太长"或"没数据"就删社交账号。**
 
 ---
 
