@@ -16,7 +16,7 @@
 2. **给简历**，三选一：
    - 🅰️ 上传 / 粘贴简历全文（推荐，结果最准）
    - 🅱️ 粘贴 LinkedIn 全文
-   - 🅲️ 还没简历 → 简略介绍一下自己。这条路线下的结论会被标 “未经简历事实校验”，并提示你去 **[Resume Skill](https://github.com/yanliudesign/resume-skill)** 先建一份正式简历。
+   - 🅲️ 还没简历 → 简略介绍一下自己。这条路线下的结论会被标 “未经简历事实校验”，并提示你去 **[Resume Skill](https://github.com/yanliudesign/resume-builder-skill)** 先建一份正式简历。
 3. **HTML 报告自动弹出** — 单文件 Offer Strategy Report 生成到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`，自动在浏览器打开。里面包含：TL;DR 结论、两个仪表、下表里的 10 节内容，以及页内的 Export PDF / Export Markdown 按钮。
 
 就这些。没有多步引导、也没有分开的 "Flow 1 / Flow 2" 交付物要你逐个看——5 条内部流程（Decode / Match / Tailor / Predict / Should I Apply）都静默跑完后拼装进同一份 HTML 报告。
@@ -91,7 +91,7 @@ job-description-skill/
 - **JD 是一面镜子，不是一份题目** — 它照出公司、HM、产品三层信息。我们要做的是看穿包装层。
 - **决策优先于优化** — 大多数候选人在错的 role 上反复优化简历。这个 Skill 先帮你决定该不该投。
 - **可复现的逻辑，不是玄学** — 每个评分 / 概率都有显式公式，不喜欢可以反驳前提。
-- **配合 [BQ Skill](https://github.com/yanliudesign/bq-skill)（故事挖掘）+ [Resume Skill](https://github.com/yanliudesign/resume-skill)（简历美化）形成完整求职链路。**
+- **配合 [BQ Skill](https://github.com/yanliudesign/Behavior-question-skill)（故事挖掘）+ [Resume Skill](https://github.com/yanliudesign/resume-builder-skill)（简历美化）形成完整求职链路。**
 
 ---
 

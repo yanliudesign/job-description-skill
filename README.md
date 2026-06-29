@@ -16,7 +16,7 @@ Invoke the skill with anything like "help me with this job" / "走一下这个 J
 2. **Give it your resume** — three options:
    - 🅰️ Upload / paste your full resume (recommended)
    - 🅱️ Paste your full LinkedIn
-   - 🅲️ No resume yet → short self-introduction. Results will be flagged as "unverified against a real resume" and you'll be nudged toward **[Resume Skill](https://github.com/yanliudesign/resume-skill)** to build one.
+   - 🅲️ No resume yet → short self-introduction. Results will be flagged as "unverified against a real resume" and you'll be nudged toward **[Resume Skill](https://github.com/yanliudesign/resume-builder-skill)** to build one.
 3. **HTML report auto-opens** — a single-file Offer Strategy Report is generated to `~/Desktop/Claude skills/offer-strategy-<slug>.html` and pops open in your browser. Inside: TL;DR verdict, two gauges, the 10 sections below, and in-page Export PDF / Export Markdown buttons.
 
 That's the whole thing. No multi-step wizard, no separate "flow 1" / "flow 2" outputs to wade through — the 5 internal flows (Decode / Match / Tailor / Predict / Should I Apply) all run silently and assemble into the same HTML report.
@@ -91,7 +91,7 @@ job-description-skill/
 - **A JD is a mirror, not a quiz** — It reflects three layers: company, hiring manager, product. Our job is to see through the packaging.
 - **Decision before optimization** — Most candidates keep polishing resumes for the wrong roles. This skill decides first whether to apply at all.
 - **Reproducible logic, not magic** — Every score and probability comes from an explicit formula. Disagree with the premise? You can argue back.
-- **Pairs with [BQ Skill](https://github.com/yanliudesign/bq-skill) (story mining) + [Resume Skill](https://github.com/yanliudesign/resume-skill) (resume polish) to form the full job-hunt chain.**
+- **Pairs with [BQ Skill](https://github.com/yanliudesign/Behavior-question-skill) (story mining) + [Resume Skill](https://github.com/yanliudesign/resume-builder-skill) (resume polish) to form the full job-hunt chain.**
 
 ---
 
