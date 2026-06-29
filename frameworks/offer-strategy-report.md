@@ -27,26 +27,62 @@
 
 ## 报告骨架（必须按此顺序）
 
+报告分两块：**报告头**（Header + Meta strip + TOC + Assumptions + Verdict + If you only read three things + 两个 gauge）和**正文 10 节**。
+
+### 报告头（章节前）
+
 1. **Header** — 公司 × 岗位 · 地点 · 薪资带 · Level · JD 一句话定位
 2. **Meta strip** — 候选人画像 / Track Record / Pedigree / 当前 Status
-3. **Inside (TOC)** — 章节快速跳转锚点
+3. **Inside (TOC)** — 12 条目，指向：`#tldr` `#assumptions` `#metrics` `#company` `#product` `#decode` `#match` `#gap` `#yes-no` `#salary` `#nextstep` `#questions` `#timeline`
 4. **⚠️ Assumptions（最关键章节，放显眼位置）** — 列出报告所依赖的全部假设（薪资底线 / visa / on-site 接受度 / 心理价位 title / 行业切换接受度 / 当前手里 pipeline 数），每条单独成行，明确写："任一不对，告诉我重新生成"
-5. **Verdict** — 一句话定性 + 3 行展开 + ⭐ 1-5 推荐指数
-6. **If you only read three things** — 3 个最重要的 takeaway（要黑体加粗，是给"不会读完全文"的 reader 用的）
-7. **Match Score gauge** — 数字（区间）+ 分项加权（Must / Nice / Hidden）+ 0–100 视觉条
-8. **Interview Probability gauge** — 区间 + 各调节因子（基线 / tailor / 公司热度 / portfolio / 内推）+ 视觉条
-9. **§i · Why this JD reads the way it does** — Flow 1 精华，每段 JD 原文 → 真实诉求
-10. **Hidden Signal 词典命中** — 表格：JD 措辞 → 解读 → 是否命中你的画像
-11. **§ii · Must Have 命中分析** — Flow 2 每条 Must Have 一张卡片：评分 + 简历原文证据 + 风险提示
-12. **§iii · Nice to Have + Hidden Signal Fit** — 隐性 Nice 命中清单 + 10 维度雷达 / 评分
-13. **§iv · 为什么投 vs 为什么不投** — 各 3 条，**"不投"每条必须附 "HM probe 应对"**（市面工具最缺这块）
-14. **§v · 薪资 reality check** — JD 带宽 + 同岗位市场数据 + 谈判 talking points
-15. **§vi · 为什么这个 role 是你叙事的下一步** — 职业弧线和这个 role 的匹配关系
-16. **§vii · 内推 playbook** — 找谁（LinkedIn 搜法）/ 怎么开口 / 完整 DM 模板
-17. **§viii · Portfolio audit** — 3-5 件 4 周内必须做的具体动作（不是泛泛而谈）
-18. **§ix · Top 10 面试题预测** — Flow 4 preview，每题标"为什么会问 + 准备方向"。结尾导流："要完整 Top 20 + Behavior 故事，去 BQ Skill"
-19. **§x · N 周行动时间线** — 按周拆解：投递前 / 投递后 / 面试前。每周 2-4 条具体 to-do
-20. **Footer** — `JD SKILL.` brand mark + 生成时间戳 + 同 JD 的 markdown 文件链接
+5. **Verdict（TL;DR · 一分钟摘要）** — 一句话定性 + 3 行展开 + ⭐ 1-5 推荐指数
+6. **If you only read three things** — 3 个最重要的 takeaway（黑体加粗，给"不会读完全文"的 reader 用）
+7. **关键指标** — Match Score gauge（数字 + Must/Nice/Hidden 加权 + 0–100 视觉条）+ Interview Probability gauge（区间 + 调节因子 + 视觉条）
+
+### 正文 10 节（按编号顺序）
+
+1. **§1 · 公司背景** — `#company`
+   公司画像（成立年份、headcount、设计团队规模、估值/营收、CEO/CPO/设计 lead、投资方）+ 文化信号（4 条 craft / pace / review）+ 近 12-24 个月关键产品节点 + 对你而言的特殊信号。**这块是市面工具最缺的"为什么你应该 care 这家公司"。**
+
+2. **§2 · 本职位产品分析** — `#product`
+   {{PRODUCT_NAME}} 的设计挑战 + 这个 role 的真实 scope。包含：产品规模（用户/营收/付费层/主要 surfaces）+ 4 个核心设计难题（JD 在找解题人）+ role 真实 scope vs JD 文字 + 成败信号（6 个月/12 个月的 ✅ + 2 个 ⚠️ 失败信号）。**让候选人在面试前就知道"这个团队真正在解什么题"。**
+
+3. **§3 · JD 深度解读** — `#decode`
+   Flow 1 精华。每段 JD 原文 → 真实诉求 + Hidden Signal 词典命中（表格：JD 措辞 → 解读 → 是否命中你的画像）。
+
+4. **§4 · JD ↔ 简历 逐条匹配** — `#match` + `#matrix` + `#nicehidden`
+   三个子块（同一节，共用 `4.` 编号）：
+   - `#match` (4.) — Must Have 命中分析：Flow 2 每条 Must Have 一张卡片（评分 + 简历原文证据 + 风险提示）
+   - `#matrix` (4·) — Match Matrix 完整对照表：3 列表格（JD 要求 / 简历证据 / 评分+Gap），覆盖 Must + Nice + Hidden
+   - `#nicehidden` (4·) — Nice to Have 隐性命中清单 + 10 维度 Hidden Signal Fit 雷达
+
+   **§4 是「其他工具看不到」的差异化点，必须有完整 Matrix。**
+
+5. **§5 · Gap 要提升的** — `#gap`
+   从 Matrix 里红/橙色格收集起来，2-4 张 Gap 卡。每张写：Gap 名称 + 严重度（高/中）+ "为什么 HM 会担心" + "4 周内怎么补"（链到 §8 portfolio audit）。**独立成节，不要塞回 Matrix 内部。**
+
+6. **§6 · 为什么投 / 不投** — `#yes-no`（也叫 `#duo`）
+   各 3 条，**"不投"每条必须附 "HM probe 应对"**（市面工具最缺这块）。
+
+7. **§7 · 薪资 reality check** — `#salary`（也叫 `#comp`）
+   JD 带宽 + 同岗位市场数据（base / equity / sign-on）+ 谈判 talking points + 当前包对比。
+
+8. **§8 · Next step（叙事 + 内推 + portfolio）** — `#nextstep` 锚点 → 三个子块共用 `8.` 编号：
+   - `#narrative` / `#arc` (8.) — 为什么这个 role 是你叙事的下一步：职业弧线 + role 在弧线上的位置
+   - `#referral` (8·) — 内推 playbook：找谁（LinkedIn 搜法）/ 怎么开口 / 完整 DM 模板
+   - `#audit` / `#portfolio` (8·) — Portfolio audit：4 周内必须做的 3-5 件具体动作（不是泛泛而谈）
+
+   **`<span id="nextstep"></span>` 锚点要放在三块的最前面**，让 TOC 跳转准确。
+
+9. **§9 · Top 10 面试题预测** — `#questions` / `#qs`
+   Flow 4 preview，每题标"为什么会问 + 准备方向"。结尾导流："要完整 Top 20 + Behavior 故事，去 BQ Skill"。
+
+10. **§10 · 6 周行动时间线** — `#timeline`
+    按周拆解：投递前 / 投递后 / 面试前。每周 2-4 条具体 to-do。
+
+### 报告尾
+
+- **Footer** — `JD SKILL.` brand mark + 生成时间戳 + 同 JD 的 markdown 文件链接
 
 ---
 
@@ -70,6 +106,27 @@
 --mono:    monospace（如 JetBrains Mono / Berkeley Mono / SF Mono）—— 数字 / score / code
 ```
 
+**⚠️ CJK 字体必须用 Noto Sans SC / Noto Serif SC（强制）**
+
+ macOS 系统自带的 `PingFang SC` / `Songti SC` / `Hiragino Sans GB` **license 不允许嵌入 PDF**。Chrome 的「Save as PDF」遇到这些字符时不嵌入字形 → PDF 阅读器显示成空白宽位（中文整段「消失」）。
+
+ 解决：在 `<head>` 里加一行 Google Fonts，并把 `Noto * SC` **排在系统 CJK 字体之前**（Latin 字符不受影响，因为 Noto 用 `unicode-range` 圈在 CJK 区间）：
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+```
+
+```css
+--serif:   "Times New Roman", "Noto Serif SC", "Songti SC", Georgia, serif;
+--display: "SF Pro Display", -apple-system, "Helvetica Neue", "Noto Sans SC", "PingFang SC", sans-serif;
+--body:    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+--mono:    "SF Mono", "JetBrains Mono", Menlo, "Noto Sans SC", monospace;
+```
+
+这是「单文件零依赖」原则的**唯一例外**——必须保留这一行 `<link>`。
+
 ### 关键 UI 组件
 - **对角线条纹背景**：用于区分 ✓ 值得投 / ✗ 不值得投 / ⚠️ 假设 三类块（每类一种条纹色 + 角度）
 - **Gauge**（评分条）：纯 SVG 或 CSS，不要外部库；显示数字 + 0/55/70/85/100 刻度
@@ -77,10 +134,39 @@
 - **TOC**：左侧 sticky 或顶部 inline，点击平滑滚动到锚点
 
 ### 文件特性
-- **单文件、零外部依赖**（CSS 内联、字体用 system 或 base64，图表用 SVG）
-- 可离线打开 / 邮件附件直接传
+- **单文件 + 一个 Google Fonts 外链**（CJK 字体必需，见上）
+- CSS 内联、图表用 SVG、无 JS 依赖（仅一段内联的 DOM→Markdown 转换器）
+- 可离线打开（首次加载后字体进浏览器缓存）/ 邮件附件直接传
 - 总体积控制在 80KB 以内
-- **右下角固定有一个“导出 PDF”按钮**：黑色 pill 样式，点击后调 `window.print()`。在 `@media print` 中 `display: none` 隐藏，所以导出出来的 PDF 不会带这个按钮。用户点击 → 浏览器打印对话框 → 选“另存为 PDF”即可。
+- **右下角固定有两个胶囊按钮**（`.export-tools` 容器内的 `.export-btn.md` + `.export-btn.pdf`）：
+  - **导出 Markdown** — 调用内联的 `exportMarkdown()`：遍历 DOM，跳过按钮和 SVG，把标题/段落/列表/表格/链接/强调还原成 Markdown，浏览器下载 `.md` 文件
+  - **导出 PDF** — 调用 `window.print()`，用户选「另存为 PDF」即可
+  - 两个按钮在 `@media print` 中 `display: none`，不会出现在导出的 PDF 里
+
+### 打印 / PDF 排版规则（关键）
+**反模式**：不要给 `section` 加 `page-break-inside: avoid`。这会让长 section 整块挤到下一页，留出半页空白——这是这类报告的高频问题。
+
+**正确做法**：只对**原子单元**禁止跨页拆分；让长 section 自然跨页流动：
+```css
+@media print {
+  @page { margin: 14mm; }
+  body { background: white; }
+  .page { padding: 0; max-width: none; }
+  .export-tools, .export-btn { display: none !important; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* 只对小卡片 / 行 / 列表项保持完整 */
+  .verdict, .tldr li, .num-card, .match-row, .nice-row, .probe-row, .signal,
+  .decode-card, .comp-card, .play-card, .audit-card, .q-row, .arc-step,
+  .toc, .notice, .radar-block, .gauge-card, .role-row {
+    break-inside: avoid; page-break-inside: avoid;
+  }
+  /* 标题不孤立在页底 */
+  h1, h2, h3, h4, .section-head { break-after: avoid; page-break-after: avoid; }
+  /* 紧凑垂直节奏 */
+  section { margin-bottom: 18px; }
+}
+```
 
 ---
 
@@ -99,16 +185,16 @@
 
 | 章节 | 数据来源 |
 |---|---|
-| §i Why this JD reads the way it does | Flow 1（精简版，2-3 段就够） |
-| §ii Must Have 命中分析 | Flow 2（完整 6 条左右） |
-| §iii Nice to Have + Hidden Signal Fit | Flow 2 续 |
-| §iv 为什么投 vs 不投 | Flow 5 |
-| §v 薪资 reality check | Flow 5 + 外部数据（Levels.fyi 等） |
-| §vi 叙事下一步 | Flow 5 + 候选人画像推断 |
-| §vii 内推 playbook | Flow 5 推荐动作 |
-| §viii Portfolio audit | Flow 5 + Flow 3 简版（不替代完整 Tailor） |
-| §ix Top 10 面试题 | Flow 4 preview（不替代完整 Top 20） |
-| §x N 周行动时间线 | Flow 5 collapse 后的执行版 |
+| §1 公司背景 | 公司 research（网站 / Crunchbase / TechCrunch / Glassdoor）+ 选择性拼接，不能编 |
+| §2 本职位产品分析 | 产品组件拆解 + JD 中隐含的 design challenge，可推演 |
+| §3 JD 深度解读 | Flow 1（精简版，2-3 段就够） |
+| §4 JD ↔ 简历 逐条匹配 | Flow 2（完整 6 条左右 Must Have + Matrix 重组 + Nice/Hidden）。三个子块：Must Have 卡·Match Matrix 表·Nice + Hidden Signal 雷达 |
+| §5 Gap 要提升的 | 从 Matrix 里红/橙色格提炼，2-4 张 Gap 卡。Gap 不能空，宁可标「本报告未发现关键 gap」也不要删 |
+| §6 为什么投 / 不投 | Flow 5 |
+| §7 薪资 reality check | Flow 5 + 外部数据（Levels.fyi 等） |
+| §8 Next step | Flow 5 + Flow 3 简版（会叙事弧/内推/portfolio audit 三子块） |
+| §9 Top 10 面试题 | Flow 4 preview（不替代完整 Top 20） |
+| §10 6 周行动计划 | Flow 5 collapse 后的执行版 |
 
 **这份报告不替代单独跑 Flow 3 / Flow 4 完整版。** 报告底部要明确导流：
 - 想要三版简历 → 跑 Flow 3 Resume Tailor
@@ -119,7 +205,7 @@
 ## 生成流程
 
 1. 确认 Flow 1 / 2 / 5 数据齐全（至少这三条）。少了就**告诉用户"先跑完 ___ 再生成报告"**，不要硬出。
-2. 在内存里组装 20 个章节的内容。
+2. 在内存里组装报告头 + 10 节正文的内容。§1 公司背景 和 §2 本职位产品分析 需要额外跑一轮公司 / 产品 research。
 3. 用 [examples/offer-strategy-template.html](../examples/offer-strategy-template.html) 的 CSS / 结构当骨架，把内容填进去。
 4. 写到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`。
 5. **同步更新 jd-bank 文件**：把 §6 / §8 / §9 三个占位符回填 + 在文件最后加一行 `> 📊 HTML 报告：~/Desktop/Claude skills/offer-strategy-<slug>.html`。
@@ -132,7 +218,9 @@
 | 症状 | 处理 |
 |---|---|
 | 用户没跑完 Flow 5 就要报告 | 拒绝 + 一句话引导："还需要先跑 Should I Apply 才能出报告，要不要现在跑？" |
-| 用户简历事实不足，§ii 写不出证据 | **标 `[需用户补充：具体项目 / 数字]`**，不要编。报告顶部 Assumptions 加一条"简历未完全提供，部分章节为占位" |
+| 用户简历事实不足，§4 / §5 写不出证据 | **标 `[需用户补充：具体项目 / 数字]`**，不要编。报告顶部 Assumptions 加一条"简历未完全提供，部分章节为占位" |
 | 用户希望"只要 Verdict 那一段" | 给一份**极简单页摘要**（5 个 block：Verdict / Match / 概率 / 3 投 3 不投 / 下一步），不要塞 20 章 |
 | 公司是中国公司 | 字体换思源宋体 / 思源黑体；薪资章节用 RMB 区间 + level 对标（P7/P8 等）|
-| 报告超过 80KB | 砍 §x 时间线和 §vii 内推模板的字数，保留所有视觉组件 |
+| 报告超过 80KB | 砍 §10 时间线和 §8 内推模板的字数，保留所有视觉组件 |
+| **导出的 PDF 里中文消失 / 变成空位** | 检查 `<head>` 里 Noto Sans SC 的 `<link>` 是否在；CSS 变量里 `Noto * SC` 是否排在 `PingFang SC` 之前。原因见「字体系统」段。 |
+| **导出的 PDF 整页只有一两个 card，下面全是空白** | 检查 `@media print` 里有没有 `section { page-break-inside: avoid; }` —— 有就删掉。只允许小原子单元用 `break-inside: avoid`，长 section 必须能自然跨页。详见「打印 / PDF 排版规则」。 |

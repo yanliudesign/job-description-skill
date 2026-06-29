@@ -6,12 +6,16 @@
 <title>Offer Strategy · {{COMPANY}} × {{ROLE}} — {{CANDIDATE}}</title>
 <!--
   Offer Strategy Report Template · JD Skill
-  - 单文件、零外部依赖
+  - 单文件 + 一个 Google Fonts 链接（用于 CJK PDF 嵌入）
   - 视觉系统：cream/sand + 红绿双 accent + 衬线大标题
   - 数据全部以 {{PLACEHOLDER}} 标记，由 skill 在生成时填充
   - 完整规格见: ../frameworks/offer-strategy-report.md
   - 真实样例（含数据）由用户在桌面生成，本仓库只保留骨架
 -->
+<!-- CJK font for reliable PDF embedding (macOS PingFang SC 无法被嵌入 PDF) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #0a0a0a;
@@ -31,10 +35,11 @@
     --stop-soft: #fde0d2;
     --hint: #2563eb;
     --accent: #facc15;
-    --serif: "Times New Roman", "Songti SC", Georgia, serif;
-    --display: "SF Pro Display", -apple-system, "Helvetica Neue", "PingFang SC", sans-serif;
-    --body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
-    --mono: "SF Mono", "JetBrains Mono", Menlo, monospace;
+    /* CJK 字体 (Noto * SC) 必须排在系统字体之前，确保 PDF 导出时中文字符可嵌入 */
+    --serif: "Times New Roman", "Noto Serif SC", "Songti SC", Georgia, serif;
+    --display: "SF Pro Display", -apple-system, "Helvetica Neue", "Noto Sans SC", "PingFang SC", sans-serif;
+    --body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", Menlo, "Noto Sans SC", monospace;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
@@ -125,6 +130,35 @@
   .match-row .score { text-align: right; font-family: var(--mono); font-size: 14px; font-weight: 700; }
   .match-summary { margin-top: 16px; padding: 14px 18px; background: var(--ink); color: var(--paper); border-radius: 4px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
   .match-summary .formula { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+
+  /* === §ii½ Match Matrix + Gap Map === */
+  .matrix-wrap { margin-top: 8px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+  table.matrix { width: 100%; border-collapse: collapse; font-size: 13px; background: white; }
+  table.matrix th { text-align: left; padding: 10px 14px; background: var(--ink); color: var(--paper); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+  table.matrix th:first-child { width: 32%; }
+  table.matrix th:last-child { width: 26%; }
+  table.matrix td { padding: 12px 14px; border-top: 1px solid var(--line-soft); vertical-align: top; line-height: 1.55; color: var(--ink-2); }
+  table.matrix tr.row-full    { background: rgba(24, 169, 87, 0.045); }
+  table.matrix tr.row-partial { background: rgba(217, 119, 6, 0.055); }
+  table.matrix tr.row-miss    { background: rgba(194, 65, 12, 0.055); }
+  table.matrix .cat { display: inline-block; font-family: var(--mono); font-size: 10px; padding: 2px 6px; border-radius: 3px; margin-right: 8px; background: var(--paper-2); color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  table.matrix .jd { font-weight: 600; color: var(--ink); display: block; margin-top: 4px; }
+  table.matrix .score-pill { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 12px; padding: 3px 8px; border-radius: 3px; margin-bottom: 6px; }
+  table.matrix .score-pill.full    { background: var(--go-soft);   color: var(--go); }
+  table.matrix .score-pill.partial { background: var(--warn-soft); color: var(--warn); }
+  table.matrix .score-pill.miss    { background: var(--stop-soft); color: var(--stop); }
+  table.matrix .gap-note { display: block; font-size: 11.5px; color: var(--muted); line-height: 1.45; }
+  table.matrix .gap-note.none { color: var(--go); }
+
+  .gap-title { font-family: var(--display); font-size: 22px; font-weight: 800; margin: 32px 0 14px; letter-spacing: -0.012em; }
+  .gap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .gap-card { background: var(--warn-soft); border-left: 3px solid var(--warn); padding: 14px 16px; border-radius: 0 4px 4px 0; }
+  .gap-card.high { background: var(--stop-soft); border-left-color: var(--stop); }
+  .gap-card .gap-label { font-weight: 700; font-size: 13.5px; color: var(--ink); margin-bottom: 6px; display: flex; align-items: baseline; gap: 8px; }
+  .gap-card .gap-label .sev { font-family: var(--mono); font-size: 10px; padding: 2px 6px; border-radius: 3px; background: rgba(255,255,255,0.6); color: var(--ink-2); letter-spacing: 0.06em; text-transform: uppercase; }
+  .gap-card .gap-meaning { font-size: 12.5px; color: var(--ink-2); line-height: 1.55; margin-bottom: 8px; }
+  .gap-card .gap-fix { font-family: var(--serif); font-style: italic; font-size: 12px; color: var(--ink-2); padding-top: 8px; border-top: 1px dashed rgba(0,0,0,0.18); }
+  .gap-card .gap-fix strong { font-style: normal; font-family: var(--body); }
 
   .nice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; }
   .nice-row { display: grid; grid-template-columns: 24px 1fr 40px; gap: 12px; align-items: center; padding: 10px 14px; background: white; border: 1px solid var(--line); border-radius: 4px; font-size: 13px; }
@@ -239,46 +273,50 @@
   .socials a.xhs span { display: inline-block; transform: skewX(-6deg); white-space: nowrap; }
   .socials a.xhs:hover { background: #d11838; border-color: #d11838; transform: translateY(-2px); }
 
-  /* Floating export-PDF button — fixed bottom-right, hidden when printing */
-  .export-pdf {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 9999;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 18px;
-    background: #1f1f1d;
-    color: #fafaf7;
-    border: none;
-    border-radius: 999px;
+  /* === Export toolbar (floating bottom-right; hidden in print) === */
+  .export-tools { position: fixed; right: 24px; bottom: 24px; z-index: 9999; display: flex; gap: 10px; }
+  .export-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 18px; background: #1f1f1d; color: #fafaf7;
+    border: none; border-radius: 999px;
     font-family: var(--body, system-ui, sans-serif);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.01em;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
     transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
   }
-  .export-pdf:hover {
-    background: #d11838;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(209, 24, 56, 0.32), 0 0 0 1px rgba(0, 0, 0, 0.05);
-  }
-  .export-pdf:active { transform: translateY(0); }
-  .export-pdf svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .export-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.05); }
+  .export-btn.pdf:hover { background: #d11838; box-shadow: 0 6px 18px rgba(209,24,56,0.32), 0 0 0 1px rgba(0,0,0,0.05); }
+  .export-btn.md:hover  { background: #0d8a45; box-shadow: 0 6px 18px rgba(13,138,69,0.32), 0 0 0 1px rgba(0,0,0,0.05); }
+  .export-btn:active { transform: translateY(0); }
+  .export-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
   @media print {
+    /* Page setup */
+    @page { margin: 14mm; }
     body { background: white; }
-    .page { padding: 24px; max-width: none; }
-    .export-pdf { display: none !important; }
-    .verdict, .tldr li::before, .num-card, .match-row, .match-summary, .arc-step:last-child,
-    .play-card, .audit-card, .q-row, .comp-card.middle, .signal, .decode-card {
-      -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    }
-    section { page-break-inside: avoid; }
+    .page { padding: 0; max-width: none; }
     h1 { font-size: 42px; }
+
+    /* Hide on-screen chrome */
+    .export-tools, .export-btn { display: none !important; }
+
+    /* Preserve background / accent colors */
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    /* Keep only ATOMIC units intact — never lock whole sections
+       (that's what causes huge whitespace before page breaks) */
+    .verdict, .tldr li, .num-card, .match-row, .nice-row, .probe-row, .signal,
+    .decode-card, .comp-card, .play-card, .audit-card, .q-row, .arc-step,
+    .toc, .notice, .radar-block, .gauge-card, .role-row {
+      break-inside: avoid; page-break-inside: avoid;
+    }
+
+    /* Don't orphan headings at page bottom */
+    h1, h2, h3, h4, .section-head { break-after: avoid; page-break-after: avoid; }
+
+    /* Tighten vertical rhythm */
+    section { margin-bottom: 18px; }
   }
 
   @media (max-width: 720px) {
@@ -300,14 +338,25 @@
 </head>
 <body>
 
-<button type="button" class="export-pdf" onclick="window.print()" aria-label="导出 PDF">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-    <polyline points="7 10 12 15 17 10"/>
-    <line x1="12" y1="15" x2="12" y2="3"/>
-  </svg>
-  <span>导出 PDF</span>
-</button>
+<div class="export-tools" role="toolbar" aria-label="导出工具">
+  <button type="button" class="export-btn md" onclick="exportMarkdown()" aria-label="导出 Markdown">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="9" y1="13" x2="15" y2="13"/>
+      <line x1="9" y1="17" x2="13" y2="17"/>
+    </svg>
+    <span>导出 Markdown</span>
+  </button>
+  <button type="button" class="export-btn pdf" onclick="window.print()" aria-label="导出 PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    <span>导出 PDF</span>
+  </button>
+</div>
 
 <header class="report-header">
   <div class="report-meta">
@@ -332,16 +381,16 @@
     <li><a href="#tldr">TL;DR · 一分钟摘要</a></li>
     <li><a href="#assumptions">⚠️ 假设说明</a></li>
     <li><a href="#metrics">关键指标</a></li>
-    <li><a href="#decode">为什么这份 JD 这样写</a></li>
-    <li><a href="#must-have">Must Have 命中分析</a></li>
-    <li><a href="#nice-hidden">Nice to Have + Hidden Signal Fit</a></li>
-    <li><a href="#yes-no">为什么投 / 不投</a></li>
-    <li><a href="#salary">薪资 reality check</a></li>
-    <li><a href="#narrative">为什么这是叙事的下一步</a></li>
-    <li><a href="#referral">内推 playbook</a></li>
-    <li><a href="#portfolio">Portfolio audit</a></li>
-    <li><a href="#questions">Top 10 面试题预测</a></li>
-    <li><a href="#timeline">N 周行动时间线</a></li>
+    <li><a href="#company">1. 公司背景</a></li>
+    <li><a href="#product">2. 本职位产品分析</a></li>
+    <li><a href="#decode">3. JD 深度解读</a></li>
+    <li><a href="#match">4. JD ↔ 简历 逐条匹配</a></li>
+    <li><a href="#gap">5. Gap 要提升的</a></li>
+    <li><a href="#yes-no">6. 为什么投 / 不投</a></li>
+    <li><a href="#salary">7. 薪资 reality check</a></li>
+    <li><a href="#nextstep">8. Next step (内推 + portfolio + 叙事)</a></li>
+    <li><a href="#questions">9. Top 10 面试题预测</a></li>
+    <li><a href="#timeline">10. 6 周行动计划</a></li>
   </ol>
 </nav>
 
@@ -394,8 +443,94 @@
 </section>
 
 <!-- §i WHY THIS JD READS THE WAY IT DOES -->
+<!-- §1 COMPANY BACKGROUND -->
+<section id="company">
+  <h2><span class="kicker">Company context</span>1. 公司背景·{{COMPANY}} 的今天</h2>
+  <div class="decode-block">
+    <div class="decode-card">
+      <div class="quote">{{COMPANY_ONE_LINER_CULTURAL_TENSION}}</div>
+      <p><strong>公司画像</strong></p>
+      <ul>
+        <li>成立 {{YEAR}} · 员工 {{HEADCOUNT}} · 设计团队 {{DESIGN_TEAM_SIZE}} · 估值 / 营收 {{VALUATION_OR_REVENUE}}</li>
+        <li>CEO {{CEO}} · CPO {{CPO}} · 设计负责人 {{DESIGN_LEAD_BACKGROUND}}</li>
+        <li>核心战略合作 / 投资方：{{KEY_INVESTORS_PARTNERS}}</li>
+        <li>收入结构：{{REVENUE_BREAKDOWN}}</li>
+      </ul>
+    </div>
+    <div class="decode-card">
+      <p><strong>文化信号</strong></p>
+      <ul>
+        <li>{{CULTURE_SIGNAL_1}}</li>
+        <li>{{CULTURE_SIGNAL_2}}</li>
+        <li>{{CULTURE_SIGNAL_3_PACE_AND_REVIEW_CYCLE}}</li>
+        <li>{{CULTURE_SIGNAL_4_CRAFT_BAR_AND_PEER_BACKGROUND}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="decode-block">
+    <div class="decode-card">
+      <p><strong>近 12-24 个月关键产品节点（推动了这次招聘）</strong></p>
+      <ul><li>{{PRODUCT_MILESTONE_1}}</li><li>{{PRODUCT_MILESTONE_2}}</li><li>{{PRODUCT_MILESTONE_3}}</li></ul>
+    </div>
+    <div class="decode-card">
+      <p><strong>对你而言的特殊信号</strong></p>
+      <ul>
+        <li>{{CANDIDATE_FIT_OR_FLAG_1}}</li>
+        <li>{{CANDIDATE_FIT_OR_FLAG_2}}</li>
+        <li>{{CANDIDATE_FIT_OR_FLAG_3}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- §2 PRODUCT ANALYSIS -->
+<section id="product">
+  <h2><span class="kicker">Product analysis</span>2. 本职位产品分析 · {{PRODUCT_NAME}} 设计挑战 + 这个 role 的真实 scope</h2>
+  <div class="decode-block">
+    <div class="decode-card">
+      <div class="quote">{{PRODUCT_ONE_LINER}}</div>
+      <p><strong>产品规模</strong></p>
+      <ul>
+        <li>用户 / 营收：{{USER_AND_REVENUE_SCALE}}</li>
+        <li>付费层：{{PRICING_TIERS}}</li>
+        <li>主要 surfaces：{{KEY_SURFACES}}</li>
+      </ul>
+    </div>
+    <div class="decode-card">
+      <p><strong>设计这个产品的核心难题（JD 在找解题人）</strong></p>
+      <ul>
+        <li><strong>{{DESIGN_CHALLENGE_1_NAME}}</strong> · {{DESIGN_CHALLENGE_1_DETAIL}}</li>
+        <li><strong>{{DESIGN_CHALLENGE_2_NAME}}</strong> · {{DESIGN_CHALLENGE_2_DETAIL}}</li>
+        <li><strong>{{DESIGN_CHALLENGE_3_NAME}}</strong> · {{DESIGN_CHALLENGE_3_DETAIL}}</li>
+        <li><strong>{{DESIGN_CHALLENGE_4_NAME}}</strong> · {{DESIGN_CHALLENGE_4_DETAIL}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="decode-block">
+    <div class="decode-card">
+      <p><strong>这个 role 的真实 scope（vs JD 文字）</strong></p>
+      <ul>
+        <li>{{REAL_SCOPE_1}}</li>
+        <li>{{REAL_SCOPE_2}}</li>
+        <li>{{REPORTING_LINE_AND_REVIEW_CYCLE}}</li>
+        <li>{{PEER_TEAM_DESCRIPTION}}</li>
+      </ul>
+    </div>
+    <div class="decode-card">
+      <p><strong>成败信号（前 12 个月）</strong></p>
+      <ul>
+        <li><strong>✅ 6 个月</strong>：{{SUCCESS_SIGNAL_6MO}}</li>
+        <li><strong>✅ 12 个月</strong>：{{SUCCESS_SIGNAL_12MO}}</li>
+        <li><strong>⚠️ 失败信号 1</strong>：{{FAILURE_SIGNAL_1}}</li>
+        <li><strong>⚠️ 失败信号 2</strong>：{{FAILURE_SIGNAL_2}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- §3 JD DEEP DECODE -->
 <section id="decode">
-  <h2><span class="kicker">Decoder · Flow 1</span>i. 为什么这份 JD 这样写</h2>
+  <h2><span class="kicker">Decoder · Flow 1</span>3. JD 深度解读 · 为什么这份 JD 这样写</h2>
   <p class="lede">{{DECODE_INTRO_1_2_SENTENCES}}</p>
   <!-- 重复 N 次 (3-5 段)：JD 原文 → 真实诉求 -->
   <div class="jd-translation">
@@ -422,7 +557,7 @@
 
 <!-- §ii MUST HAVE HIT ANALYSIS -->
 <section id="must-have">
-  <h2><span class="kicker">Match · Flow 2</span>ii. {{N}} 条 Must Have 命中分析</h2>
+  <h2><span class="kicker">Match · Flow 2</span>4. JD ↔ 简历 逐条匹配 · Must Have 命中</h2>
   <div class="must-card hit">
     <div class="head"><span class="status">✅</span><span class="letter">A</span><h3>{{MUST_HAVE_TITLE}}</h3><span class="score mono">{{SCORE}}</span></div>
     <p>{{EVIDENCE_FROM_RESUME_VERBATIM}}</p>
@@ -432,18 +567,68 @@
   <div class="total">Must Have 平均：{{AVG}} · Total = 0.6 × {{MUST}} + 0.2 × {{NICE}} + 0.2 × {{HIDDEN}} = <strong>{{TOTAL}}%</strong></div>
 </section>
 
+<!-- §ii½ MATCH MATRIX + GAP MAP — 逐条 JD↔简历对照 + 主要 Gap -->
+<section id="matrix">
+  <h2><span class="kicker">Gap analysis</span>4 · Match Matrix 完整对照表</h2>
+  <p class="sub" style="font-size: 12.5px; color: var(--muted); margin: 0 0 10px;">把 Must Have / Nice / Hidden Signal 全部压成一张表：左 = JD 要求 (原文摘要)，中 = 你简历里最直接的证据，右 = 评分 + Gap 提示。同一个要求看三桌就能定量出「这条到底是不是能补」。</p>
+
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr><th>JD 要求</th><th>你的简历证据</th><th>评分 / Gap</th></tr>
+      </thead>
+      <tbody>
+        <!-- 每行三个状态：row-full / row-partial / row-miss -->
+        <tr class="row-{{STATUS}}">
+          <td><span class="cat">{{CATEGORY}}</span><span class="jd">{{JD_REQUIREMENT_VERBATIM_OR_SHORT}}</span></td>
+          <td>{{RESUME_EVIDENCE_VERBATIM}}</td>
+          <td>
+            <span class="score-pill {{STATUS}}">{{SCORE}}</span>
+            <span class="gap-note {{NONE_IF_FULL}}">{{GAP_OR_DASH}}</span>
+          </td>
+        </tr>
+        <!-- 重复 8-14 行：Must Have 全部 + Nice Have 全部 + Hidden Signal 中评分 ≤ 0.7 的那几个 -->
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="gap-title">⚠ Gap Map · 主要缺口 + 4 周内的应对</h3>
+  <div class="gap-grid">
+    <!-- 在 §5 #gap 里填充，这里不重复 -->
+  </div>
+</section>
+
 <!-- §iii NICE TO HAVE + HIDDEN SIGNAL FIT -->
 <section id="nice-hidden">
-  <h2><span class="kicker">Match · Flow 2 续</span>iii. Nice to Have + Hidden Signal Fit</h2>
+  <h2><span class="kicker">Match · Flow 2 续</span>4 · Nice to Have + Hidden Signal Fit</h2>
   <h3>隐性 Nice to Have 命中（{{N}} 条 · JD 没明写但 HM 会偏好）</h3>
   <!-- 列表 -->
   <h3>Hidden Signal Fit 雷达（10 维度）</h3>
   <svg class="radar" viewBox="0 0 200 200"><!-- 纯 SVG 10 顶点雷达 --></svg>
 </section>
 
+<!-- §5 GAP MAP -->
+<section id="gap">
+  <h2><span class="kicker">Action gaps</span>5. Gap 要提升的 · 主要缺口 + 4 周应对</h2>
+  <p>上一节 Matrix 里红 / 橙色的格子收集起来→ 2-4 个真实 gap。每张卡给出「为什么 HM 会担心 + 4 周内怎么补」。</p>
+  <div class="gap-grid">
+    <div class="gap-card high">
+      <div class="gap-label"><span>Gap 1 · {{GAP_NAME}}</span><span class="sev">高</span></div>
+      <div class="gap-meaning">{{WHY_THIS_MATTERS_AND_HOW_HM_SEES_IT}}</div>
+      <div class="gap-fix"><strong>→</strong> {{4_WEEK_MITIGATION_LINK_TO_SECTION}}</div>
+    </div>
+    <div class="gap-card">
+      <div class="gap-label"><span>Gap 2 · {{GAP_NAME}}</span><span class="sev">中</span></div>
+      <div class="gap-meaning">{{WHY_THIS_MATTERS}}</div>
+      <div class="gap-fix"><strong>→</strong> {{MITIGATION}}</div>
+    </div>
+    <!-- 再 1-2 张 -->
+  </div>
+</section>
+
 <!-- §iv WHY YES / WHY NO -->
 <section id="yes-no" class="two-col">
-  <h2>iv. 为什么投 vs 为什么不投（含 HM probe 应对）</h2>
+  <h2>6. 为什么投 vs 为什么不投（含 HM probe 应对）</h2>
   <div class="col col-yes">
     <h3>✓ 为什么值得投</h3>
     <ul>
@@ -466,7 +651,7 @@
 
 <!-- §v SALARY -->
 <section id="salary">
-  <h2>v. 薪资 reality check</h2>
+  <h2>7. 薪资 reality check</h2>
   <p>{{SALARY_PARAGRAPH}}</p>
   <table>
     <tr><th>项</th><th>JD 带宽</th><th>市场区间</th><th>你的当前</th><th>谈判 talking point</th></tr>
@@ -476,14 +661,16 @@
 </section>
 
 <!-- §vi NARRATIVE -->
+<!-- §8 NEXT STEP — 三块联动：叙事弧·内推·portfolio audit -->
+<span id="nextstep"></span>
 <section id="narrative">
-  <h2>vi. 为什么这个 role 是你叙事的下一步</h2>
+  <h2>8. Next step · 为什么这个 role 是你叙事的下一步</h2>
   <p>{{CAREER_ARC_MATCH_2_3_PARA}}</p>
 </section>
 
 <!-- §vii REFERRAL PLAYBOOK -->
 <section id="referral">
-  <h2>vii. 内推 playbook</h2>
+  <h2>8 · 内推 playbook</h2>
   <ol>
     <li><strong>找谁</strong>：{{WHO_TO_FIND_LINKEDIN_SEARCH_TIP}}</li>
     <li><strong>怎么开口</strong>：{{HOW_TO_REACH_OUT_PRINCIPLE}}</li>
@@ -493,7 +680,7 @@
 
 <!-- §viii PORTFOLIO AUDIT -->
 <section id="portfolio">
-  <h2>viii. Portfolio audit：4 周内必须做的 {{N}} 件事</h2>
+  <h2>8 · Portfolio audit：4 周内必须做的 {{N}} 件事</h2>
   <ol>
     <li><strong>{{ACTION_1_TITLE}}</strong> — {{ACTION_1_DETAIL_WHY_HOW}}</li>
     <!-- ... -->
@@ -502,7 +689,7 @@
 
 <!-- §ix INTERVIEW QUESTIONS PREVIEW -->
 <section id="questions">
-  <h2><span class="kicker">Predictor · Flow 4 preview</span>ix. Top 10 面试题预测</h2>
+  <h2><span class="kicker">Predictor · Flow 4 preview</span>9. Top 10 面试题预测</h2>
   <ol class="q-list">
     <li>
       <h4>{{Q1_TEXT}}</h4>
@@ -516,7 +703,7 @@
 
 <!-- §x TIMELINE -->
 <section id="timeline">
-  <h2>x. {{N}} 周行动时间线</h2>
+  <h2>10. {{N}} 周行动时间线</h2>
   <ol class="timeline">
     <li><span class="week">Week 1</span><ul><li>{{W1_TODO_1}}</li><li>{{W1_TODO_2}}</li></ul></li>
     <li><span class="week">Week 2</span><ul><li>{{W2_TODO_1}}</li></ul></li>
@@ -528,6 +715,78 @@
   <h2 class="brand-mark">JD SKILL<span class="dot-yellow">.</span></h2>
   <p>Generated {{TIMESTAMP}} · See also <a href="{{JD_MD_LINK}}">jd-bank markdown</a></p>
 </footer>
+
+<script>
+  // DOM → Markdown converter. Walks the report and emits a readable .md file.
+  // Skips UI chrome (buttons, SVGs), preserves headings / lists / tables / links / emphasis.
+  (function () {
+    const SKIP_SELECTOR = 'script, style, svg, .export-tools, .export-btn';
+    function walk(node) {
+      if (!node) return '';
+      if (node.nodeType === 3) return node.textContent.replace(/\s+/g, ' ');
+      if (node.nodeType !== 1) return '';
+      if (node.matches && node.matches(SKIP_SELECTOR)) return '';
+      const tag = node.tagName.toLowerCase();
+      const kids = () => Array.from(node.childNodes).map(walk).join('');
+      const txt  = () => node.textContent.trim().replace(/\s+/g, ' ');
+      switch (tag) {
+        case 'h1': return `\n\n# ${txt()}\n\n`;
+        case 'h2': return `\n\n## ${txt()}\n\n`;
+        case 'h3': return `\n\n### ${txt()}\n\n`;
+        case 'h4': return `\n\n#### ${txt()}\n\n`;
+        case 'h5':
+        case 'h6': return `\n\n##### ${txt()}\n\n`;
+        case 'p':  return `${kids().trim()}\n\n`;
+        case 'br': return '\n';
+        case 'hr': return '\n---\n\n';
+        case 'strong': case 'b': return `**${kids().trim()}**`;
+        case 'em': case 'i':     return `_${kids().trim()}_`;
+        case 'code': return `\`${node.textContent}\``;
+        case 'a': {
+          const href = node.getAttribute('href') || '';
+          const t = kids().trim();
+          return href ? `[${t}](${href})` : t;
+        }
+        case 'ul':
+        case 'ol': {
+          const items = Array.from(node.children).filter(c => c.tagName === 'LI');
+          return '\n' + items.map((li, i) => {
+            const marker = tag === 'ol' ? `${i + 1}.` : '-';
+            const content = Array.from(li.childNodes).map(walk).join('').trim().replace(/\n+/g, ' ');
+            return `${marker} ${content}`;
+          }).join('\n') + '\n\n';
+        }
+        case 'table': {
+          const rows = Array.from(node.querySelectorAll('tr'));
+          if (!rows.length) return '';
+          const cells = r => Array.from(r.children).map(c => c.textContent.trim().replace(/\|/g, '\\|').replace(/\s+/g, ' '));
+          const head = cells(rows[0]);
+          const lines = [
+            '| ' + head.join(' | ') + ' |',
+            '| ' + head.map(() => '---').join(' | ') + ' |',
+            ...rows.slice(1).map(r => '| ' + cells(r).join(' | ') + ' |'),
+          ];
+          return '\n' + lines.join('\n') + '\n\n';
+        }
+        case 'blockquote': return '\n' + kids().trim().split('\n').map(l => `> ${l}`).join('\n') + '\n\n';
+        default: return kids();
+      }
+    }
+    window.exportMarkdown = function () {
+      const title = (document.title || 'offer-strategy-report').trim();
+      const root  = document.querySelector('.page, body');
+      let md = `# ${title}\n\n` + walk(root);
+      md = md.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+\n/g, '\n').trim() + '\n';
+      const slug = title.replace(/[\\/:*?"<>|]+/g, '-').replace(/\s+/g, '-').slice(0, 100) || 'report';
+      const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+      const url  = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = slug + '.md';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+  })();
+</script>
 
 </body>
 </html>
