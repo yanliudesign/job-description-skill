@@ -28,6 +28,10 @@ If you already know which single flow you want, say so ("only decode this" / "ju
 
 Every wizard run ends with a single-file HTML report at `~/Desktop/Claude skills/offer-strategy-<slug>.html`. The report is **the differentiator** — it's what other JD tools don't give you. Fixed 10-section spine, plus a TL;DR preamble and a key-metrics gauge block:
 
+![Offer Strategy Report preview](docs/report-preview.png)
+
+*Hero of an actual run — verdict + assumptions + TL;DR + two gauges, plus the in-page Export PDF / Export Markdown buttons in the bottom right.*
+
 | # | Section | What it answers |
 |---|---------|-----------------|
 | — | **TL;DR · one-minute verdict** | Should I apply? ⭐ 1–5. |

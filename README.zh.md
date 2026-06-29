@@ -28,6 +28,10 @@
 
 Wizard 跑完的默认交付物是一份单文件 HTML 报告，存到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`。这份报告是**区别市面其他 JD 工具的核心交付物**。固定 10 节主骸 + TL;DR 预头 + 关键指标仪表：
 
+![Offer Strategy Report 预览](docs/report-preview.png)
+
+*一份真实报告的顶部 — Verdict + Assumptions + TL;DR + 两个仪表，右下角是页内的导出 PDF / Markdown 按钮。*
+
 | # | 章节 | 回答什么 |
 |---|------|----------|
 | — | **TL;DR · 一分钟摘要** | 这到底能不能投？⭐ 1–5 分。 |
