@@ -34,6 +34,7 @@
 | 文件 | 公司 | 岗位 | Match | ⭐ | 候选人 |
 |---|---|---|---|---|---|
 | [linear-principal-product-designer-202606.md](linear-principal-product-designer-202606.md) | Linear | Principal Product Designer | 70–80% | 3.5/5 | Yan Liu |
+| [xai-exceptional-designer-202606.md](xai-exceptional-designer-202606.md) | xAI | Exceptional Designer | 78–85% | 4/5 | Yan Liu |
 
 <!--
 | 文件 | 公司 | 岗位 | Match | 下一步 |
@@ -72,12 +73,19 @@
 ### OpenAI
 - [openai-product-designer-chatgpt-202606.md](openai-product-designer-chatgpt-202606.md) — Product Designer, ChatGPT (Senior IC, SF)
 
+### xAI
+- [xai-exceptional-designer-202606.md](xai-exceptional-designer-202606.md) — Exceptional Designer (Mid→Principal IC, Palo Alto on-site · Grok + X)
+
+### Linear
+- [linear-principal-product-designer-202606.md](linear-principal-product-designer-202606.md) — Principal Product Designer (Principal IC, Remote)
+
 ---
 
 ## 按岗位类型聚合（同类岗位 must-have 类似，可参考）
 
 ### AI Product Designer (Consumer)
 - [openai-product-designer-chatgpt-202606.md](openai-product-designer-chatgpt-202606.md) — OpenAI / ChatGPT
+- [xai-exceptional-designer-202606.md](xai-exceptional-designer-202606.md) — xAI / Grok + X（社交 × AI 双线）
 
 <!--
 ### AI Product Designer

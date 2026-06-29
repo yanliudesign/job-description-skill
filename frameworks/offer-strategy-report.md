@@ -82,7 +82,10 @@
 
 ### 报告尾
 
-- **Footer（必须用完整签名版，不要简化）** — `JD SKILL.` brand mark + `Created by Dreameryanyan · Job Description Decoder & Offer Strategy OS` 副标题 + 三个社交圆形按钮（LinkedIn `yanliudesign` / X `yanliudreamer` / 小红书红方块）+ italic sig 行 `— JD Skill · Offer Strategy Report` + meta 行（生成时间戳 + JD source URL + 评分方法引用 + "no fabricated facts" 声明）+ 同 JD 的 markdown 文件链接。骨架见 [examples/offer-strategy-template.html](../examples/offer-strategy-template.html) 的 `<footer class="report-footer">`。**生成新报告时这一块原样保留，不要因为"看起来太长"或"没数据"就删社交账号。**
+- ⛔ **Footer（强制项 · 必须用完整签名版，绝不简化）** — `JD SKILL.` brand mark + `Created by Dreameryanyan · Job Description Decoder & Offer Strategy OS` 副标题 + 三个社交圆形按钮（LinkedIn `yanliudesign` / X `yanliudreamer` / 小红书红方块）+ meta 行（生成时间戳 + JD source URL + 评分方法引用 + "no fabricated facts" 声明）+ 同 JD 的 markdown 文件链接。
+  - **这是作者署名，不是可选装饰。** 这是市面工具丢得最多、本 skill 最高频的 bug：模型为了省篇幅或「没数据」把整个 footer 删了 / 简化成一行。**无论报告多长、多缺数据，都必须原样包含。**
+  - 生成时**直接抄本文件末尾的「📌 强制 Footer 区块」**（HTML + 配套 CSS 都在），把 `{{...}}` 占位符填好即可，不要凭记忆重写。
+  - 写完文件后**自检**：必须能搜到 `Dreameryanyan` / `brand-mark` / `yanliudreamer` / `xiaohongshu` 四个关键词，缺一个就是 footer 丢了。
 
 ---
 
@@ -224,3 +227,59 @@
 | 报告超过 80KB | 砍 §10 时间线和 §8 内推模板的字数，保留所有视觉组件 |
 | **导出的 PDF 里中文消失 / 变成空位** | 检查 `<head>` 里 Noto Sans SC 的 `<link>` 是否在；CSS 变量里 `Noto * SC` 是否排在 `PingFang SC` 之前。原因见「字体系统」段。 |
 | **导出的 PDF 整页只有一两个 card，下面全是空白** | 检查 `@media print` 里有没有 `section { page-break-inside: avoid; }` —— 有就删掉。只允许小原子单元用 `break-inside: avoid`，长 section 必须能自然跨页。详见「打印 / PDF 排版规则」。 |
+| **footer 没有作者名字 / 社交按钮（最高频）** | 生成时漏抄了 footer。从下方「📌 强制 Footer 区块」整段抄回去，并跑自检搜 `Dreameryanyan`。原因：footer 是软提醒时最容易被模型省略。 |
+
+---
+
+## 📌 强制 Footer 区块（每份报告原样抄，填 `{{}}` 占位符）
+
+> ⛔ 这一整块（CSS + HTML）是**必抄项**。生成报告时把它接在正文 `</div>`（`.page` 收尾）之前的 `<footer>`，并确保 CSS 已在 `<style>` 里。**只替换 `{{...}}`，其余一字不改。**
+
+**配套 CSS（放进 `<style>`）：**
+
+```css
+footer { margin-top: 40px; }
+.brand-block { display: grid; grid-template-columns: 1fr auto; gap: 36px; align-items: end; padding: 44px 0 28px; border-top: 1px solid var(--line); }
+.brand-block .brand-mark { font-family: var(--display); font-weight: 800; font-size: 92px; line-height: 0.92; letter-spacing: -0.045em; color: var(--ink); margin: 0; }
+.brand-block .brand-mark .dot-yellow { color: var(--accent); -webkit-text-stroke: 1px var(--ink); }
+.brand-block .brand-sub { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--muted); margin-top: 10px; }
+.brand-block .brand-sub strong { font-style: normal; font-family: var(--display); font-weight: 700; color: var(--ink); }
+.socials { display: flex; gap: 12px; align-items: center; }
+.socials a { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--paper); color: var(--ink); transition: all 0.18s ease; }
+.socials a:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.socials a svg { width: 20px; height: 20px; display: block; }
+.socials a.xhs { width: 46px; height: 46px; padding: 0; border-radius: 11px; background: #ff2442; border: 1.5px solid #ff2442; color: white; font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; font-weight: 900; font-size: 11px; font-style: italic; letter-spacing: -0.02em; line-height: 1; }
+.socials a.xhs span { display: inline-block; transform: skewX(-6deg); white-space: nowrap; }
+.socials a.xhs:hover { background: #d11838; border-color: #d11838; transform: translateY(-2px); }
+.foot-meta { font-size: 11px; color: var(--muted); line-height: 1.75; padding-top: 16px; }
+@media (max-width: 720px) { .brand-block { grid-template-columns: 1fr; gap: 18px; } .brand-block .brand-mark { font-size: 56px; } }
+```
+
+**HTML（放进正文末尾）：**
+
+```html
+<footer>
+  <div class="brand-block">
+    <div>
+      <h2 class="brand-mark">JD SKILL<span class="dot-yellow">.</span></h2>
+      <div class="brand-sub">Created by <strong>Dreameryanyan</strong> · Job Description Decoder &amp; Offer Strategy OS</div>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/yanliudesign/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn · yanliudesign">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+      <a href="https://x.com/yanliudreamer" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X · @yanliudreamer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a class="xhs" href="https://www.xiaohongshu.com/user/profile/5b2afdf311be104ac3c22931" target="_blank" rel="noopener" aria-label="Xiaohongshu" title="小红书 · Dreameryanyan">
+        <span>小红书</span>
+      </a>
+    </div>
+  </div>
+  <div class="foot-meta">
+    Generated {{YYYY-MM-DD}} · {{COMPANY}} × {{ROLE}} · Candidate: {{CANDIDATE}} · Source: <a href="{{JD_SOURCE_URL}}" target="_blank">{{JD_SOURCE_DISPLAY}}</a><br>
+    数据来源：JD 原文 + 用户简历 + 公开公司情报。薪资 / 假设见顶部「假设说明」。Match 按 0.6/0.2/0.2 权重，拿面概率按 go-no-go 估算法，均为区间非单点。<strong>无杜撰事实</strong>。<br>
+    下游：整体简历打磨 → Resume Skill · 完整 Top 20 + Behavior 故事 → BQ Skill。
+  </div>
+</footer>
+```
