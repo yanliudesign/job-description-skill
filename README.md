@@ -8,19 +8,20 @@ A JD ≠ a recruiting blurb. It's the hiring manager's real expectations, the te
 
 ---
 
-## Default Onboarding Wizard
+## How it works — just 3 steps
 
-Invoke the skill with a vague ask like "help me with this job" / "走一下这个 JD" and you get a 7-step guided run:
+Invoke the skill with anything like "help me with this job" / "走一下这个 JD" and you go through exactly:
 
 1. **Paste the JD** — link or full text.
-2. **Give the skill your profile** — three options:
+2. **Give it your resume** — three options:
    - 🅰️ Upload / paste your full resume (recommended)
    - 🅱️ Paste your full LinkedIn
-   - 🅲️ No resume yet → short self-introduction (current title, recent 2–3 roles, top skills, target direction). Match / Tailor results will be flagged as "unverified against a real resume" and you'll be nudged toward **Resume Skill** to build one.
-3–7. **Run flows 1 → 5 in sequence** — Decode → Match → Tailor → Predict → Should I Apply, pausing for confirmation between each so you can skip or redirect.
-8. **Auto-generate the Offer Strategy Report** — a single-file, self-contained HTML deck that fuses Flow 1 + 2 + 4 + 5 + strategy layer (referral / portfolio / timeline), saved to `~/Desktop/Claude skills/offer-strategy-<slug>.html`. Spec in [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md), skeleton in [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html).
+   - 🅲️ No resume yet → short self-introduction. Results will be flagged as "unverified against a real resume" and you'll be nudged toward **[Resume Skill](https://github.com/yanliudesign/resume-skill)** to build one.
+3. **HTML report auto-opens** — a single-file Offer Strategy Report is generated to `~/Desktop/Claude skills/offer-strategy-<slug>.html` and pops open in your browser. Inside: TL;DR verdict, two gauges, the 10 sections below, and in-page Export PDF / Export Markdown buttons.
 
-If you already know which single flow you want, say so ("only decode this" / "just match score") and the skill skips the wizard and routes straight there.
+That's the whole thing. No multi-step wizard, no separate "flow 1" / "flow 2" outputs to wade through — the 5 internal flows (Decode / Match / Tailor / Predict / Should I Apply) all run silently and assemble into the same HTML report.
+
+If you explicitly want only one flow ("only decode this" / "just match score") the skill skips the report and gives you the raw output for that one flow.
 
 ---
 
@@ -48,20 +49,6 @@ Every wizard run ends with a single-file HTML report at `~/Desktop/Claude skills
 | **10** | **6-week action plan** | Week-by-week to-dos: before applying / after applying / before interview. |
 
 The report supports **Export to PDF** (CJK-safe Noto font embedding) and **Export to Markdown** (single-file MD download). Spec: [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md) · skeleton: [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html).
-
----
-
-## 5 Flows (ordered by frequency of use)
-
-| Flow | Purpose | How users ask |
-|------|---------|---------------|
-| **1. JD Decoder** | 5-layer translation of what the JD actually means | "help me read this JD" / "decode this JD" |
-| **2. Match Score** | Compute fit (0.6 / 0.2 / 0.2 weighted) + strengths / gaps / risks | "can I apply to this?" / "match me against this" |
-| **3. Resume Tailor** | Three resume versions (ATS / Recruiter / HM) | "tailor my resume to this JD" |
-| **4. Interview Predictor** | Top-20 interview questions + answer angles | "what will they ask me?" |
-| **5. Should I Apply** | Five-part verdict (⭐ rating / values / risks / probability / next step) | "should I apply?" |
-
-Entry lives in [`SKILL.md`](./SKILL.md) — routing table, three ironclad rules, file map.
 
 ---
 

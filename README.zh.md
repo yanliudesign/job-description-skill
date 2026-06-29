@@ -8,19 +8,20 @@
 
 ---
 
-## 默认引导流程（Onboarding Wizard）
+## 整个 skill 只有 3 步
 
-用模糊的问法调用 skill（“帮我看看这个职位” / “help me with this job”）会走一套 7 步引导：
+用任何模糊的话调用（“帮我看看这个职位” / "help me with this job"）都会走同一条路径：
 
-1. **贴 JD** —— 链接或全文。
-2. **给你的画像**，三选一：
+1. **贴 JD** — 链接或全文。
+2. **给简历**，三选一：
    - 🅰️ 上传 / 粘贴简历全文（推荐，结果最准）
    - 🅱️ 粘贴 LinkedIn 全文
-   - 🅲️ 还没简历 → 简略介绍下自己（当前 Title / 近 2–3 段经历 / 最强 1–2 个技能 / 目标方向）。这条路线下的 Match / Tailor 结果会被标 “未经简历事实校验”，并提示你去 **Resume Skill** 先建一份正式简历。
-3–7. **顺序跑流程 1 → 5** —— Decode → Match → Tailor → Predict → Should I Apply，每条之间停下来让你确认是否继续 / 跳过 / 换方向。
-8. **自动生成 Offer Strategy Report** —— 一份单文件、零依赖的 HTML 报告，融合 Flow 1 + 2 + 4 + 5 + 策略层（内推 / portfolio / 时间线），存到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`。规格见 [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md)，骨架见 [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html)。
+   - 🅲️ 还没简历 → 简略介绍一下自己。这条路线下的结论会被标 “未经简历事实校验”，并提示你去 **[Resume Skill](https://github.com/yanliudesign/resume-skill)** 先建一份正式简历。
+3. **HTML 报告自动弹出** — 单文件 Offer Strategy Report 生成到 `~/Desktop/Claude skills/offer-strategy-<slug>.html`，自动在浏览器打开。里面包含：TL;DR 结论、两个仪表、下表里的 10 节内容，以及页内的 Export PDF / Export Markdown 按钮。
 
-如果你已经明确只要某一条流程（“只解码这份 JD” / “只算匹配度”），skill 会跳过引导直接进对应流程。
+就这些。没有多步引导、也没有分开的 "Flow 1 / Flow 2" 交付物要你逐个看——5 条内部流程（Decode / Match / Tailor / Predict / Should I Apply）都静默跑完后拼装进同一份 HTML 报告。
+
+如果你明确只要其中某一条流程（“只解码这份 JD” / “只算匹配度”），skill 会跳过报告生成，只给那条流程的原始输出。
 
 ---
 
@@ -48,20 +49,6 @@ Wizard 跑完的默认交付物是一份单文件 HTML 报告，存到 `~/Deskto
 | **10** | **6 周行动计划** | 按周拆解：投递前 / 投递后 / 面试前。 |
 
 报告内置 **一键 Export PDF**（修复了中文字体在 PDF 里不嵌入的问题，Noto SC 工作中）和 **一键 Export Markdown**（单文件 .md 下载）。规格见 [`frameworks/offer-strategy-report.md`](frameworks/offer-strategy-report.md)，骨架见 [`examples/offer-strategy-template.html`](examples/offer-strategy-template.html)。
-
----
-
-## 5 个流程（按使用频率排序）
-
-| Flow | 用途 | 用户问法 |
-|------|------|----------|
-| **1. JD Decoder** | 5 层翻译 JD 的真实意图 | "帮我看看这份 JD" / "decode this JD" |
-| **2. Match Score** | 算匹配度（0.6/0.2/0.2 加权）+ 强项 / Gap / 风险 | "我能投这个吗？" / "match 一下" |
-| **3. Resume Tailor** | 出三版简历（ATS / Recruiter / HM） | "改简历适配这个 JD" |
-| **4. Interview Predictor** | Top 20 面试题 + 应答方向 | "面这个会被问什么" |
-| **5. Should I Apply** | 五件套决策（⭐推荐 / values / risks / 概率 / 下一步） | "该不该投？" / "should I apply" |
-
-入口在 [`SKILL.md`](./SKILL.md) — 路由表 + 三铁律 + 文件地图。
 
 ---
 
