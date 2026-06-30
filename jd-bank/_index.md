@@ -35,6 +35,7 @@
 |---|---|---|---|---|---|
 | [linear-principal-product-designer-202606.md](linear-principal-product-designer-202606.md) | Linear | Principal Product Designer | 70–80% | 3.5/5 | Yan Liu |
 | [xai-exceptional-designer-202606.md](xai-exceptional-designer-202606.md) | xAI | Exceptional Designer | 78–85% | 4/5 | Yan Liu |
+| [anthropic-product-designer-claude-code-202606.md](anthropic-product-designer-claude-code-202606.md) | Anthropic | Product Designer, Claude Code | 80–88% | 4.5/5 | Yan Liu |
 
 <!--
 | 文件 | 公司 | 岗位 | Match | 下一步 |
@@ -76,6 +77,9 @@
 ### xAI
 - [xai-exceptional-designer-202606.md](xai-exceptional-designer-202606.md) — Exceptional Designer (Mid→Principal IC, Palo Alto on-site · Grok + X)
 
+### Anthropic
+- [anthropic-product-designer-claude-code-202606.md](anthropic-product-designer-claude-code-202606.md) — Product Designer, Claude Code (Senior/Staff IC, SF hybrid · dev tool)
+
 ### Linear
 - [linear-principal-product-designer-202606.md](linear-principal-product-designer-202606.md) — Principal Product Designer (Principal IC, Remote)
 
@@ -86,6 +90,7 @@
 ### AI Product Designer (Consumer)
 - [openai-product-designer-chatgpt-202606.md](openai-product-designer-chatgpt-202606.md) — OpenAI / ChatGPT
 - [xai-exceptional-designer-202606.md](xai-exceptional-designer-202606.md) — xAI / Grok + X（社交 × AI 双线）
+- [anthropic-product-designer-claude-code-202606.md](anthropic-product-designer-claude-code-202606.md) — Anthropic / Claude Code（AI 编码 dev tool）
 
 <!--
 ### AI Product Designer
