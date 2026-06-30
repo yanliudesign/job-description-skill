@@ -95,6 +95,23 @@ job-description-skill/
 
 ---
 
+## Related skills
+
+Part of a three-skill **Career Copilot** chain — decode the JD here, then hand off:
+
+- [resume-builder-skill](https://github.com/yanliudesign/resume-builder-skill) — Resume Builder & Beautifier (11 print-ready templates)
+- [Behavior-question-skill](https://github.com/yanliudesign/Behavior-question-skill) — Behavioral interview / Career Story OS
+
+```
+See a dream job → JD Skill (decode · match · should-I-apply)
+                     ↓ decide to apply
+                  Resume Skill (tailor + polish)
+                     ↓ get the interview
+                  BQ Skill (mine stories · mock interview)
+```
+
+---
+
 ## License
 
 MIT — fork it, remix it, ship your own version.
