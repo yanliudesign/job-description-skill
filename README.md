@@ -1,6 +1,8 @@
 # Job Description Skill
 
 > 🌐 **English** · [中文](./README.zh.md)
+>
+> 📦 Also available in the **[offer-toolkit-skill](https://github.com/yanliudesign/offer-toolkit-skill)** bundle — one-stop Career Copilot pack (JD · Resume · BQ).
 
 > **JD Decoder & Offer Strategy OS** — translate any Job Description into a complete go/no-go battle map: should you apply, how to apply, how to win. The entry point of the job-hunt chain.
 

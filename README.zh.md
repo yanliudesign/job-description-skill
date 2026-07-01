@@ -1,6 +1,8 @@
 # Job Description Skill
 
 > 🌐 **中文** · [English](./README.md)
+>
+> 📦 也可以从 **[offer-toolkit-skill](https://github.com/yanliudesign/offer-toolkit-skill)** 一站式打包获取（JD · Resume · BQ 三合一）。
 
 > **JD Decoder & Offer Strategy OS** — 把任何 Job Description 翻译成"该不该投 / 怎么投 / 怎么赢"的完整作战图。求职链路的入口。
 
