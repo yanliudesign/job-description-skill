@@ -2,7 +2,7 @@
 
 > 🌐 **English** · [中文](./README.zh.md)
 >
-> 📦 Also available in the **[offer-toolkit-skill](https://github.com/yanliudesign/offer-toolkit-skill)** bundle — one-stop Career Copilot pack (JD · Resume · BQ).
+> 📦 Also available in the **[offer-toolkit-skill](https://github.com/yanliudesign/offer-toolkit-skill)** bundle — one-stop Career Coach pack (JD · Resume · BQ).
 
 > **JD Decoder & Offer Strategy OS** — translate any Job Description into a complete go/no-go battle map: should you apply, how to apply, how to win. The entry point of the job-hunt chain.
 
@@ -99,7 +99,7 @@ job-description-skill/
 
 ## Related skills
 
-Part of a three-skill **Career Copilot** chain — decode the JD here, then hand off:
+Part of a three-skill **Career Coach** chain — decode the JD here, then hand off:
 
 - [resume-builder-skill](https://github.com/yanliudesign/resume-builder-skill) — Resume Builder & Beautifier (11 print-ready templates)
 - [Behavior-question-skill](https://github.com/yanliudesign/Behavior-question-skill) — Behavioral interview / Career Story OS
